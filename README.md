@@ -7,7 +7,7 @@ Scan recent commits in repository for secrets with trufflehog.
 ```yaml
 steps:
 - uses: actions/checkout@v2
-- uses: UnicornGlobal/trufflehog-actions-scan@master
+- uses: janeapp/trufflehog-actions-scan@master
   with:
     branch: ${{ github.head_ref }}
 ```
