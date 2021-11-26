@@ -7,4 +7,9 @@ if [ -n "${INPUT_BRANCH}" ]; then
 fi
 
 cp /regexes.json .
-trufflehog . ${args}
+trufflehog . ${args} | tee trufflehog_output.log
+
+if [[ $(stat -c%s trufflehog_output.log) -gt 0 ]]; then
+  echo "truffleHog has found secrets :("
+  exit 1
+fi
