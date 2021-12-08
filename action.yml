@@ -7,6 +7,9 @@ inputs:
   branch:
     description: 'Branch to run the check on'
     required: false
+  allowed_path:
+    description: 'path to JSON list file with allowed secrets'
+    required: false
 branding:
   icon: 'lock'
   color: 'orange'

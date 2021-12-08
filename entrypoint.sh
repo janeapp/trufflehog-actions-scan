@@ -6,6 +6,10 @@ if [ -n "${INPUT_BRANCH}" ]; then
   args="${args} --branch ${INPUT_BRANCH}"
 fi
 
+if [ -n "${INPUT_ALLOWED_PATH}" ]; then
+  args="${args} --allow ${INPUT_ALLOWED_PATH}"
+fi
+
 cp /regexes.json .
 trufflehog . ${args} | tee trufflehog_output.log
 
