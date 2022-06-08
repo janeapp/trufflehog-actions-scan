@@ -1,6 +1,6 @@
 #!/bin/bash
 
-args="--regex --rules regexes.json --entropy=False --max_depth=50 --repo_path=."
+args="--regex --rules regexes.json --entropy=False --repo_path=."
 
 if [ -n "${INPUT_BRANCH}" ]; then
   args="${args} --branch ${INPUT_BRANCH}"
