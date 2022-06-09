@@ -1,6 +1,6 @@
 #!/bin/bash
 
-args="--regex --rules regexes.json --entropy=False --repo_path=."
+args="--regex --rules regexes.json --entropy=False --repo_path=. --json"
 
 if [ -n "${INPUT_BRANCH}" ]; then
   args="${args} --branch ${INPUT_BRANCH}"
@@ -15,9 +15,9 @@ fi
 git config --global --add safe.directory /github/workspace
 
 cp /regexes.json .
-trufflehog . ${args} | tee trufflehog_output.log
+trufflehog . ${args} | tee trufflehog_v2_output.json
 
-if [[ $(stat -c%s trufflehog_output.log) -gt 0 ]]; then
+if [[ $(stat -c%s trufflehog_v2_output.json) -gt 0 ]]; then
   echo "truffleHog has found secrets :("
   exit 1
 fi
